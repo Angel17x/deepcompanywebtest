@@ -4,6 +4,7 @@ import { ProductDemo } from 'src/app/models/product-demo.interface';
 import { ProductsService } from 'src/app/services/products/products-service.service';
 import translate from 'src/app/utils/translate';
 import { Utils } from 'src/app/utils/utils';
+
 @Component({
   selector: 'app-products-page',
   templateUrl: './products-page.component.html',
@@ -12,8 +13,6 @@ import { Utils } from 'src/app/utils/utils';
 export class ProductsPageComponent implements OnInit {
 
   products: ProductDemo[] = [];
-  currentPage:number = 1;
-  pages:number = 1;
   readonly title: string = 'Listado de productos';
   readonly subtitle: string = 'El precio y otros detalles pueden variar según el tamaño y el color del producto.';
 
@@ -25,11 +24,7 @@ export class ProductsPageComponent implements OnInit {
 
   public callService(): void {
     this.service.getProductsDemo()
-    .subscribe(data => {
-      this.pages = data.pages ?? 1;
-      
-      this.formattedData(data.results);
-    });
+    .subscribe(data => this.formattedData(data.results));
   }
 
   private formattedData(listProducts:ProductDemo[] | null):void {

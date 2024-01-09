@@ -8,11 +8,15 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpInterceptorRequest } from './config/interceptors/http-interceptors';
 import { ProductsService } from './services/products/products-service.service';
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { RatingComponent } from './components/rating/rating.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsPageComponent
+    ProductsPageComponent,
+    RatingComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
